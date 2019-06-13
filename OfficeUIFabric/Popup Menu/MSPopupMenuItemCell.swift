@@ -114,6 +114,7 @@ class MSPopupMenuItemCell: UITableViewCell {
         _imageView.image = item.image
         _imageView.highlightedImage = item.selectedImage
         _imageView.isHidden = _imageView.image == nil
+        selectedImageView.isHidden = !item.showCheckmark
 
         titleLabel.text = item.title
         subtitleLabel.text = item.subtitle
@@ -253,6 +254,6 @@ class MSPopupMenuItemCell: UITableViewCell {
             titleLabel.textColor = isSelected ? MSColors.PopupMenu.Item.titleSelected : MSColors.PopupMenu.Item.title
             subtitleLabel.textColor = isSelected ? MSColors.PopupMenu.Item.subtitleSelected : MSColors.PopupMenu.Item.subtitle
         }
-        selectedImageView.isHidden = !isSelected
+        selectedImageView.isHidden = !isSelected || !(item?.showCheckmark ?? true)
     }
 }
